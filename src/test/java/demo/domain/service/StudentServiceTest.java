@@ -51,14 +51,14 @@ public class StudentServiceTest
 		s.setName("Tom");
 		s.setDept("Tom Dept");
 		Student std = stdService.createStudent(s);
-		//assertEquals("5",std.getStdId().toString());
+		assertEquals("1",std.getStdId().toString());
 	}
 	
 	@Test
 	public void getAllTest()
 	{
 		List<Student> allStudent = stdService.getAll();
-		//assertEquals(46, allStudent.size());
+		assertEquals(1, allStudent.size());
 		
 		Student student = allStudent.get(0);
 		
