@@ -70,7 +70,7 @@ public class StudentServiceTest
 	@Test
 	public void findByIdTest() throws Exception
 	{
-		mockMvc.perform(get("/student/findbyid/2")).andExpect(status().isOk());
+		mockMvc.perform(get("/student/findbyid/1")).andExpect(status().isOk());
 	}
 
 }
