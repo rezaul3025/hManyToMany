@@ -6,9 +6,11 @@ buildscript {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
+        maven {url "https://plugins.gradle.org/m2/"}
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath "com.bmuschko:gradle-cargo-plugin:2.1"
     }
 }
 
@@ -17,6 +19,7 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'idea' 
 apply plugin: 'spring-boot' 
 apply plugin: 'war'
+apply plugin: "com.bmuschko.cargo"
 
 
 war {
@@ -50,6 +53,19 @@ eclipse {
     classpath {
          containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
          containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}
+
+cargo {
+    containerId = 'tomcat7x'
+    port = 9090
+    deployable {
+    context = 'userforums-0.0.1-SNAPSHOT'
+    }
+    remote {
+        hostname = '192.168.0.9'
+        username = 'tomcat'
+        password = 'tomcat'
     }
 }
 
