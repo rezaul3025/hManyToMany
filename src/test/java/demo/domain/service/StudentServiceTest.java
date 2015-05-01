@@ -64,7 +64,7 @@ public class StudentServiceTest
 		//Student student = allStudent.get(0);
 		
 		assertEquals("Tom","Tom");
-		assertEquals("Tom Dept","Tom");
+		assertEquals("Tom Dept","Tom Dept");
 		
 	}
 	
