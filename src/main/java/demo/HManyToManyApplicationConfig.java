@@ -21,6 +21,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebMvc
@@ -30,7 +31,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableJpaRepositories
 @EnableAutoConfiguration
 @EntityScan(basePackages={"demo"})
-public class HManyToManyApplicationConfig extends SpringBootServletInitializer
+public class HManyToManyApplicationConfig  extends WebMvcConfigurerAdapter
 {
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
@@ -45,10 +46,6 @@ public class HManyToManyApplicationConfig extends SpringBootServletInitializer
 	@Resource
 	private Environment env;
 	
-	@Override
-	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-	    return application.sources(HManyToManyApplication.class);
-	  }
 	
 	@Bean
     public DataSource dataSource() {
