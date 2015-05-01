@@ -32,7 +32,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableJpaRepositories
 @EnableAutoConfiguration
 @EntityScan(basePackages={"demo"})
-public class HManyToManyApplicationConfig   extends SpringBootServletInitializer 
+public class Application   extends SpringBootServletInitializer 
 {
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
@@ -48,12 +48,12 @@ public class HManyToManyApplicationConfig   extends SpringBootServletInitializer
 	private Environment env;
 	
 	public static void main(String[] args) {
-        SpringApplication.run(HManyToManyApplicationConfig.class, args);
+        SpringApplication.run(Application.class, args);
     }
 	
 	@Override
 	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-	    return application.sources(HManyToManyApplicationConfig.class);
+	    return application.sources(Application.class);
 	  }
 	
 	@Bean
