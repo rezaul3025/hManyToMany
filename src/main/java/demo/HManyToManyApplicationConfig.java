@@ -7,6 +7,8 @@ import javax.sql.DataSource;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableJpaRepositories
 @EnableAutoConfiguration
 @EntityScan(basePackages={"demo"})
-public class HManyToManyApplicationConfig
+public class HManyToManyApplicationConfig extends SpringBootServletInitializer
 {
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
@@ -42,6 +44,11 @@ public class HManyToManyApplicationConfig
 	
 	@Resource
 	private Environment env;
+	
+	@Override
+	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	    return application.sources(HManyToManyApplication.class);
+	  }
 	
 	@Bean
     public DataSource dataSource() {
