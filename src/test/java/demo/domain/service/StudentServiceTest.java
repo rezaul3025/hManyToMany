@@ -41,6 +41,11 @@ public class StudentServiceTest
 	@Before
 	public void setup()
 	{
+		Student s=new Student();
+		s.setName("Tom");
+		s.setDept("Tom Dept");
+		Student std = stdService.createStudent(s);
+		
 		this.mockMvc = webAppContextSetup(webApplicationContext).build();
 	}
 	
